@@ -1,0 +1,10 @@
+<h1>Angular SSR Hybrid Rendering Demo</h1>
+<p>
+  This route is configured with <code>RenderMode.Client</code>, so it renders
+  entirely in the browser after the app shell loads. Rendered client-side at
+  {{ renderedAt() }}.
+</p>
+<p>
+  Visit <a routerLink="/products">Products</a> for a server-rendered (SSR)
+  route, or <a routerLink="/about">About</a> for a prerendered (SSG) route.
+</p>

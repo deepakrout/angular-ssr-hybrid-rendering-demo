@@ -1,0 +1,10 @@
+<h1>Products</h1>
+<p>Rendered with <code>RenderMode.Server</code> — fresh HTML on every request.</p>
+@for (product of products(); track product.id) {
+  <div class="card">
+    <h3><a [routerLink]="['/products', product.id]">{{ product.name }}</a></h3>
+    <p>${{ product.price }}</p>
+  </div>
+} @empty {
+  <div class="skeleton"></div>
+}
