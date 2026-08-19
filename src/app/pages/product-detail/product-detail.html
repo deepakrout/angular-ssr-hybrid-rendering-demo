@@ -1,0 +1,19 @@
+@if (product(); as p) {
+  <h1>{{ p.name }}</h1>
+  <p class="card">{{ p.description }}</p>
+  <p><strong>${{ p.price }}</strong></p>
+
+  <!--
+    Incremental hydration: the comments block is server-rendered as real
+    HTML (good for SEO / no layout shift) but its JavaScript does not
+    hydrate until the block scrolls into view. Until then it's inert,
+    lightweight markup. See Part 2 of the blog series for the full writeup.
+  -->
+  @defer (on viewport; hydrate on viewport) {
+    <app-comments [productId]="p.id" />
+  } @placeholder {
+    <div class="skeleton" aria-label="Comments loading"></div>
+  }
+} @else {
+  <div class="skeleton"></div>
+}
